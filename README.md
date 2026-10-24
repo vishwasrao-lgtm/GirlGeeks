@@ -4,22 +4,35 @@
 
 ## Quick start
 
+**Prerequisites:** Node.js 20.9 or newer (required by Next.js 16) and npm.
+
 ```bash
-cd careertwin
+git clone https://github.com/vishwasrao-lgtm/GirlGeeks.git
+cd GirlGeeks
 npm install
-cp .env.example .env.local   # optional: add GEMINI_API_KEY or OPENAI_API_KEY (Groq works too)
-npm run dev                   # http://localhost:3000
+cp .env.example .env.local   # optional, see below
+npm run dev                  # http://localhost:3000
 ```
 
-For the live demo, use a production build (faster, no dev overlay):
+On Windows Command Prompt, use `copy .env.example .env.local` instead of `cp`. PowerShell accepts `cp`.
+
+### API keys (optional)
+
+Add `GEMINI_API_KEY` or `OPENAI_API_KEY` to `.env.local` to enable AI-written wording. Groq and other OpenAI-compatible providers also work; see `.env.example` for the variable names.
+
+**No API key? Everything still works.** A deterministic rule engine powers every feature offline, and each result is tagged **AI-generated** or **Rule engine** so you can see which path ran. Click **"Try with demo profile"** on the home page to load a sample student.
+
+### Production build (recommended for demos)
 
 ```bash
 npm run build && npm start
 ```
 
-No API key? Everything still works. A deterministic rule engine powers every feature offline, and each result is tagged **AI-generated** or **Rule engine** so judges can see which path ran. Click **"Try with demo profile"** on the home page to load a sample student.
+This is faster and has no dev overlay.
 
-Use **Chrome or Edge** for voice answers (Web Speech API). Webcam analysis runs fully on-device with MediaPipe (model files are bundled in `public/mediapipe`).
+### Browser support
+
+Use **Chrome or Edge** for voice answers (Web Speech API). Webcam analysis runs fully on-device with MediaPipe (model files are bundled in `public/mediapipe`). Camera and mic access need `localhost` or HTTPS.
 
 ## Tech stack
 
